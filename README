@@ -1,0 +1,11 @@
+
+Network Security project
+
+Amalgamation Script
+
+Reqs: Python >3.9 Flask
+
+Run:
+
+$ export FLASK_APP=working_demo.py
+$ python -m flask run
