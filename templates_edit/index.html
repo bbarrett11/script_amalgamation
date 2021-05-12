@@ -1,0 +1,47 @@
+<!doctype html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="static/critical.js"></script>
+
+<title>Normal Page</title>
+  <h1>Hello there, I have not seen you before!</h1>
+<body>
+    <button onclick="critFunction()">Critical Buisness Component</button>
+    <div hidden=true id=critical_hidden> Critical Information </div>
+</body>
+
+<script>
+
+</script>
+<script>
+    function initFingerprintJS() {
+        const fpPromise = FingerprintJS.load()
+
+    // Get the visitor identifier when you need it.
+    fpPromise
+      .then(fp => fp.get())
+      .then(result => {
+        // This is the visitor identifier:
+        const visitorId = result.visitorId
+        console.log(visitorId)
+        data = {}
+        data['id'] = visitorId
+        $.ajax({
+        url: '/',
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "json"
+            })
+        .done(function(result){  
+            if(result['page'] != "None") {
+                window.location.href = result['page']     
+            }   
+        })
+      })
+    }
+</script>
+<script
+  async
+  src="static/fp.js"
+  onload="initFingerprintJS()"
+></script>

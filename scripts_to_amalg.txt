@@ -1,0 +1,2 @@
+static/fp.js
+static/critical.js
